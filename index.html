@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SolvyOn - Inteligência Aplicada para Seu Negócio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                width: 56px;
+                height: 56px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 28px;
+            }
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #1A2C44 0%, #0F172A 100%);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 194, 255, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(0, 194, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 194, 255, 0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white py-4 px-6 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-br from-[#00C2FF] to-[#8A4DFF]">
+                    <svg viewBox="0 0 100 100" class="w-8 h-8">
+                        <path d="M20,30 Q50,10 80,30 Q65,50 80,70 Q50,90 20,70 Q35,50 20,30" 
+                              fill="none" 
+                              stroke="white" 
+                              stroke-width="8" 
+                              stroke-linecap="round" 
+                              stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span class="text-xl font-bold">SolvyOn</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#servicos" class="hover:text-blue-300 transition">Serviços</a>
+                <a href="#sobre" class="hover:text-blue-300 transition">Sobre</a>
+                <a href="#depoimentos" class="hover:text-blue-300 transition">Depoimentos</a>
+                <a href="#faq" class="hover:text-blue-300 transition">FAQ</a>
+            </div>
+            <a href="#contato" class="bg-blue-400 hover:bg-blue-300 text-gray-900 font-semibold px-6 py-2 rounded-full transition duration-300">
+                Contato
+            </a>
+            <button class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20 md:py-32 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                    Transformamos ideias em negócios.<br>E negócios em potências.
+                </h1>
+                <p class="text-xl md:text-2xl text-blue-200 mb-8">
+                    Diagnóstico, estratégia e execução para quem quer crescer com clareza.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#servicos" class="bg-blue-400 hover:bg-blue-300 text-gray-900 font-semibold px-8 py-4 rounded-full text-lg transition duration-300 text-center pulse-animation">
+                        Ative sua Solução
+                    </a>
+                    <a href="#sobre" class="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-gray-900 font-semibold px-8 py-4 rounded-full text-lg transition duration-300 text-center">
+                        Saiba Mais
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative w-full max-w-md">
+                    <div class="absolute -top-10 -left-10 w-32 h-32 bg-blue-400 rounded-full opacity-20"></div>
+                    <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-purple-500 rounded-full opacity-20"></div>
+                    <div class="relative bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-2xl p-8 shadow-xl border border-gray-800">
+                        <div class="flex justify-center mb-6">
+                            <div class="w-20 h-20 rounded-full flex items-center justify-center bg-gradient-to-br from-[#00C2FF] to-[#8A4DFF]">
+                                <svg viewBox="0 0 100 100" class="w-16 h-16">
+                                    <path d="M20,30 Q50,10 80,30 Q65,50 80,70 Q50,90 20,70 Q35,50 20,30" 
+                                          fill="none" 
+                                          stroke="white" 
+                                          stroke-width="8" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-center mb-4">Sua solução personalizada</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-400 mt-1 mr-3"></i>
+                                <span>Diagnóstico estratégico</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-400 mt-1 mr-3"></i>
+                                <span>Posicionamento de mercado</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-400 mt-1 mr-3"></i>
+                                <span>Plano executável</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-400 mt-1 mr-3"></i>
+                                <span>Resultados mensuráveis</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="py-20 px-6 bg-white">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Sobre a SolvyOn</h2>
+                <div class="w-20 h-1 bg-blue-400 mx-auto"></div>
+            </div>
+            <div class="max-w-4xl mx-auto text-center">
+                <p class="text-xl text-gray-700 mb-8">
+                    Somos especialistas em ativar soluções. Diagnóstico estratégico, posicionamento, visual e planos executáveis — entregues sob medida. Para quem quer sair do zero, escalar ou destravar o negócio.
+                </p>
+                <div class="grid md:grid-cols-3 gap-8 mt-12">
+                    <div class="bg-gray-50 p-6 rounded-xl">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-lightbulb text-blue-500 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Ideias Potencializadas</h3>
+                        <p class="text-gray-600">Transformamos conceitos abstratos em planos concretos e executáveis.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-chart-line text-blue-500 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Crescimento Estruturado</h3>
+                        <p class="text-gray-600">Metodologias comprovadas para escalar seu negócio com segurança.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-xl">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <i class="fas fa-bolt text-blue-500 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Resultados Rápidos</h3>
+                        <p class="text-gray-600">Entregas ágeis sem comprometer a qualidade e profundidade.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="py-20 px-6 bg-gray-50">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nossos Planos</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Soluções sob medida para cada etapa do seu negócio</p>
+                <div class="w-20 h-1 bg-blue-400 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- SolvyStart -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-500 card-hover">
+                    <div class="bg-blue-400 py-4 px-6">
+                        <h3 class="text-xl font-bold text-gray-900">SolvyStart</h3>
+                        <p class="text-gray-800">Para quem tem apenas uma ideia</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-900">R$ 497</span>
+                            <span class="text-gray-500">/plano</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-blue-400 mt-1 mr-3"></i>
+                                <span>Nome da marca + slogan</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-blue-400 mt-1 mr-3"></i>
+                                <span>Identidade visual completa</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-blue-400 mt-1 mr-3"></i>
+                                <span>Posicionamento e análise de mercado</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-blue-400 mt-1 mr-3"></i>
+                                <span>Persona e público ideal</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-blue-400 mt-1 mr-3"></i>
+                                <span>Plano operacional inicial</span>
+                            </li>
+                        </ul>
+                        <a href="https://wa.me/5519953247278?text=Olá%2C%20Marina.%20Estou%20interessado%20no%20plano%20SolvyStart%20para%20tirar%20minha%20ideia%20do%20papel.%20Gostaria%20de%20saber%20mais." target="_blank" class="block w-full bg-blue-400 hover:bg-blue-300 text-gray-900 font-semibold py-3 px-6 rounded-lg text-center transition duration-300">
+                            Quero esse plano
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- SolvyFix -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-500 card-hover transform scale-105">
+                    <div class="bg-purple-500 py-4 px-6">
+                        <h3 class="text-xl font-bold text-white">SolvyFix</h3>
+                        <p class="text-purple-100">Para quem sente que estagnou</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-900">R$ 997</span>
+                            <span class="text-gray-500">/plano</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-purple-500 mt-1 mr-3"></i>
+                                <span>Diagnóstico completo do negócio</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-purple-500 mt-1 mr-3"></i>
+                                <span>Análise de concorrência + oportunidades</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-purple-500 mt-1 mr-3"></i>
+                                <span>Plano de reestruturação</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-purple-500 mt-1 mr-3"></i>
+                                <span>Reposicionamento estratégico</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-purple-500 mt-1 mr-3"></i>
+                                <span>Checklist com recomendações práticas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-purple-500 mt-1 mr-3"></i>
+                                <span>1 sessão de alinhamento</span>
+                            </li>
+                        </ul>
+                        <a href="https://wa.me/5519953247278?text=Olá%2C%20Marina.%20Quero%20saber%20mais%20sobre%20o%20plano%20SolvyFix%20para%20destravar%20meu%20negócio.%20Podemos%20conversar%3F" target="_blank" class="block w-full bg-purple-500 hover:bg-purple-400 text-white font-semibold py-3 px-6 rounded-lg text-center transition duration-300">
+                            Quero esse plano
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- SolvyPro -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-500 card-hover">
+                    <div class="bg-blue-600 py-4 px-6">
+                        <h3 class="text-xl font-bold text-white">SolvyPro</h3>
+                        <p class="text-blue-100">Para quem quer escalar</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-900">R$ 1.497</span>
+                            <span class="text-gray-500">/plano</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-blue-600 mt-1 mr-3"></i>
+                                <span>Consultoria personalizada</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-blue-600 mt-1 mr-3"></i>
+                                <span>Roadmap de crescimento</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-blue-600 mt-1 mr-3"></i>
+                                <span>Metas e KPIs definidos</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-blue-600 mt-1 mr-3"></i>
+                                <span>Plano tático de execução</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-blue-600 mt-1 mr-3"></i>
+                                <span>Otimização de processos</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-blue-600 mt-1 mr-3"></i>
+                                <span>Propostas para tecnologia</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-blue-600 mt-1 mr-3"></i>
+                                <span>2 sessões de alinhamento</span>
+                            </li>
+                        </ul>
+                        <a href="https://wa.me/5519953247278?text=Olá%2C%20Marina.%20Tenho%20interesse%20no%20plano%20SolvyPro%20para%20escalar%20meu%20negócio.%20Gostaria%20de%20mais%20detalhes." target="_blank" class="block w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 px-6 rounded-lg text-center transition duration-300">
+                            Quero esse plano
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-20 px-6 bg-white">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Por que escolher a SolvyOn?</h2>
+                <div class="w-20 h-1 bg-blue-400 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-rocket text-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Entregas Rápidas</h3>
+                    <p class="text-gray-600">Processos otimizados para entregar soluções em até 5 dias úteis.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-search text-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Diagnóstico Preciso</h3>
+                    <p class="text-gray-600">Análise profunda para identificar exatamente o que seu negócio precisa.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-check-double text-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Planos Executáveis</h3>
+                    <p class="text-gray-600">Estratégias práticas que você pode implementar imediatamente.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-pie text-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Resultados Mensuráveis</h3>
+                    <p class="text-gray-600">Metodologias que geram impacto real e crescimento sustentável.</p>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl p-8 text-white max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-6 md:mb-0">
+                        <h3 class="text-2xl font-bold mb-4">+ de 150 soluções entregues</h3>
+                        <p class="mb-4">Clientes satisfeitos em todo o Brasil</p>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                                <i class="fas fa-star text-yellow-300 mr-1"></i>
+                                <i class="fas fa-star text-yellow-300"></i>
+                            </div>
+                            <span>5.0 (87 avaliações)</span>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center">
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg border border-white border-opacity-30">
+                            <div class="flex items-center justify-center space-x-2">
+                                <i class="fas fa-shield-alt text-3xl"></i>
+                                <span class="text-xl font-bold">Garantia de Satisfação</span>
+                            </div>
+                            <p class="text-sm mt-2 text-center">Revisamos seu material se não atender às expectativas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="depoimentos" class="py-20 px-6 bg-gray-50">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">O que nossos clientes dizem</h2>
+                <div class="w-20 h-1 bg-blue-400 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80" 
+                                 alt="Camila R." 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Camila R.</h4>
+                            <p class="text-gray-500 text-sm">Empreendedora, São Paulo</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-2">
+                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700">
+                        "Eu só tinha uma ideia e o plano da SolvyOn mudou tudo. Hoje tenho nome, marca e estratégia pronta!"
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80" 
+                                 alt="João A." 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">João A.</h4>
+                            <p class="text-gray-500 text-sm">CEO, Rio de Janeiro</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-2">
+                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700">
+                        "Finalmente entendi por que minha empresa travava. A clareza que tive com o plano foi absurda."
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80" 
+                                 alt="Vanessa F." 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Vanessa F.</h4>
+                            <p class="text-gray-500 text-sm">Diretora, Belo Horizonte</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-2">
+                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700">
+                        "Foi surreal a entrega: parecia que conheciam meu negócio melhor do que eu."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="py-20 px-6 bg-white">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Casos de Uso</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Veja como podemos ajudar em diferentes situações</p>
+                <div class="w-20 h-1 bg-blue-400 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user-plus text-blue-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Empreendedores Iniciantes</h3>
+                    </div>
+                    <p class="text-gray-600">
+                        Você tem uma ideia mas não sabe por onde começar? Criamos toda a estrutura do zero: nome, identidade visual, posicionamento e plano de ação inicial.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-expand text-blue-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Empresas em Expansão</h3>
+                    </div>
+                    <p class="text-gray-600">
+                        Seu negócio está crescendo mas você sente que falta estrutura? Analisamos seus processos e criamos um plano para escalar com segurança.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-store text-blue-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Negócios Locais</h3>
+                    </div>
+                    <p class="text-gray-600">
+                        Você tem um negócio físico mas não consegue se destacar? Trabalhamos no reposicionamento e estratégias para aumentar sua relevância local.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-bolt text-blue-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Startups</h3>
+                    </div>
+                    <p class="text-gray-600">
+                        Precisa ganhar tração no mercado? Desenvolvemos estratégias de crescimento rápido e posicionamento competitivo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 px-6 bg-gray-50">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Perguntas Frequentes</h2>
+                <div class="w-20 h-1 bg-blue-400 mx-auto"></div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden mb-6">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                        <span class="text-lg font-medium">Em quanto tempo recebo meu plano?</span>
+                        <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-6 pb-6 hidden">
+                        <p class="text-gray-600">
+                            Normalmente em 3 a 5 dias úteis após a confirmação do briefing completo. Para planos mais complexos (SolvyPro), pode levar até 7 dias.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden mb-6">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                        <span class="text-lg font-medium">A entrega é visual ou só texto?</span>
+                        <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-6 pb-6 hidden">
+                        <p class="text-gray-600">
+                            Todo material vem em PDF profissional com elementos visuais (quando aplicável) e versão editável em Notion ou PowerPoint, conforme o plano escolhido.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden mb-6">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                        <span class="text-lg font-medium">Posso adaptar depois?</span>
+                        <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-6 pb-6 hidden">
+                        <p class="text-gray-600">
+                            Sim! Todo o conteúdo é seu para editar ou usar como quiser. Fornecemos os arquivos fonte quando necessário.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden mb-6">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                        <span class="text-lg font-medium">Preciso ter empresa aberta?</span>
+                        <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-6 pb-6 hidden">
+                        <p class="text-gray-600">
+                            Não. Podemos começar com sua ideia desde o zero, mesmo sem CNPJ. O SolvyStart é perfeito para essa situação.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                        <span class="text-lg font-medium">Como funciona o processo?</span>
+                        <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-6 pb-6 hidden">
+                        <p class="text-gray-600">
+                            1. Você escolhe o plano ideal<br>
+                            2. Preenche nosso briefing detalhado<br>
+                            3. Nossa equipe analisa e desenvolve sua solução<br>
+                            4. Recebe o material completo em até 5 dias<br>
+                            5. Pode solicitar ajustes se necessário (dentro do escopo)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="contato" class="py-20 px-6 gradient-bg text-white">
+        <div class="container mx-auto">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Vamos ativar a sua solução?</h2>
+                <p class="text-xl text-blue-200 mb-10 max-w-2xl mx-auto">
+                    Descubra o potencial da sua ideia ou negócio com um plano real, pronto para aplicar.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-12">
+                    <a href="https://wa.me/5519953247278?text=Olá%2C%20Marina.%20Quero%20falar%20diretamente%20com%20você%20para%20tirar%20algumas%20dúvidas." target="_blank" class="bg-white hover:bg-gray-100 text-gray-900 font-semibold px-8 py-4 rounded-full text-lg transition duration-300 text-center">
+                        Transforme minha ideia agora
+                    </a>
+                    <a href="#servicos" class="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-semibold px-8 py-4 rounded-full text-lg transition duration-300 text-center">
+                        Ver planos novamente
+                    </a>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mt-16">
+                    <div class="flex flex-col items-center">
+                        <div class="w-14 h-14 bg-blue-400 bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-envelope text-blue-300 text-xl"></i>
+                        </div>
+                        <h3 class="font-medium mb-2">E-mail</h3>
+                        <a href="mailto:solvyon@gmail.com" class="text-blue-300 hover:text-white">solvyon@gmail.com</a>
+                    </div>
+                    
+                    <div class="flex flex-col items-center">
+                        <div class="w-14 h-14 bg-blue-400 bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-globe text-blue-300 text-xl"></i>
+                        </div>
+                        <h3 class="font-medium mb-2">Site</h3>
+                        <a href="http://www.solvyon.com.br" class="text-blue-300 hover:text-white">www.solvyon.com.br</a>
+                    </div>
+                    
+                    <div class="flex flex-col items-center">
+                        <div class="w-14 h-14 bg-blue-400 bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                            <i class="fab fa-instagram text-blue-300 text-xl"></i>
+                        </div>
+                        <h3 class="font-medium mb-2">Instagram</h3>
+                        <a href="https://instagram.com/SolvyOn" class="text-blue-300 hover:text-white">@SolvyOn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 px-6">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-6 md:mb-0">
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-br from-[#00C2FF] to-[#8A4DFF]">
+                        <svg viewBox="0 0 100 100" class="w-8 h-8">
+                            <path d="M20,30 Q50,10 80,30 Q65,50 80,70 Q50,90 20,70 Q35,50 20,30" 
+                                  fill="none" 
+                                  stroke="white" 
+                                  stroke-width="8" 
+                                  stroke-linecap="round" 
+                                  stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <span class="text-white text-xl font-bold">SolvyOn</span>
+                </div>
+                
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="#servicos" class="hover:text-white transition">Serviços</a>
+                    <a href="#sobre" class="hover:text-white transition">Sobre</a>
+                    <a href="#depoimentos" class="hover:text-white transition">Depoimentos</a>
+                    <a href="#faq" class="hover:text-white transition">FAQ</a>
+                </div>
+                
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-500 transition">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-400 transition">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-700 transition">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center md:text-left">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="mb-4 md:mb-0">© 2023 SolvyOn. Todos os direitos reservados.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="hover:text-white transition">Termos de Serviço</a>
+                        <a href="#" class="hover:text-white transition">Política de Privacidade</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5519953247278" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                // Toggle answer visibility
+                answer.classList.toggle('hidden');
+                
+                // Rotate icon
+                if (answer.classList.contains('hidden')) {
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    icon.style.transform = 'rotate(180deg)';
+                }
+                
+                // Close other open answers
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    if (q !== question) {
+                        q.nextElementSibling.classList.add('hidden');
+                        q.querySelector('i').style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+        });
+        
+        // Mobile menu toggle (placeholder - would need more implementation)
+        document.querySelector('.md\\:hidden').addEventListener('click', () => {
+            alert('Mobile menu would open here in a full implementation');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
